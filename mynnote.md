@@ -33,6 +33,27 @@ if so mark as
 2. process return from L1I,  mark instr->fetched=COMPELTE
 3. process return from DTLB, mark instr->translated=COMPELETE, merge packets into RTS1, RTL1.
 4. process return from L1D,  mark instr->fetched=COMPELTE
+## schedule_instruction()
+1. mark instr->execute=INFLIGHT
+## execute_instruction()
+1. mark instr->execute=INFLIGHT
+## retire_rob()
+1. create packets for L1D write queue
+2. pop rob entry
+
+#cache.cc:
+## add_rq()
+1. check forwarded from wq first
+2. check duplication. If so, merge request
+3. add to RQ
+## add_wq()
+1. check duplication
+2. add to WQ
+## prefetch_line()
+1. add request packet into VAPQ or add_pq based on whether virtual address prefetch or not
+## va_translate_prefetches():
+1. translate VAPQ.front() and add to pq
+2. 
 
 
 
