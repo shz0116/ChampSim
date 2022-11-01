@@ -1,14 +1,40 @@
 # ooo_cpu.cc:
-## check_dib:
+## check_dib()
 1. check insts in IFETCH_BUFFER from DIB (decode instruction buffer, cache) and 
 if so mark as 
   instr.translation = COMPLETE
   instr.fetched = COMPELTE
   instr.decoded = COMPLETE
-## translate_fetch:
+## translate_fetch()
 1. check IFETCH_BUFFER for translations and send packet to ITLB
-## fetch_instruction
+## fetch_instruction()
 1. fetch those instructions in IFETCH_BUFFER (translated but not fetched),
    send packet to L1I,
    makr instr->fetched=INFLIGHT
+## promote_to_decode()
+1. move translated&fetched instrs in IFETCH_BUFFER to DECODE_BUFFER
+## decode_instruction()
+1. update DIB and move instrs from DECODE_BUFFER to DISPATCH_BUFFER
+## dispatch_instruction()
+1. move instrs from DISPATCH_BUFFER to ROB
+## schedule_memory_instruction()
+1. put load/store requests of ROB intructions into LD/ST queue
+2. mark: instr->scheduled=COMPLETE, execute=INFLIGHT
+3. STA ???
+### add_load_queue()
+1. check RAW relationship, store forward, or add load into RTL0
+### add_store_queue()
+2. add to RTS0
+## operate_lsq()
+1. translate RTS0 and send packet to DTLB, execute RTS1
+2. translate RTL0 and send packet to DTLB, execute RTL1 and send packet to L1D
+## handle_memory_return()
+1. process return from ITLB, mark instr->translated=COMPLETE
+2. process return from L1I,  mark instr->fetched=COMPELTE
+3. process return from DTLB, mark instr->translated=COMPELETE, merge packets into RTS1, RTL1.
+4. process return from L1D,  mark instr->fetched=COMPELTE
+
+
+
+
    
