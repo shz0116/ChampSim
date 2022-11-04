@@ -8,11 +8,8 @@ CPU_L2C(level=5)
 LLC(level=6)
 
 ## direction:
-to return  /\         lower_level  |
-            |                      |
-            |                      |
-            |                     \/
-            
+to return (up)        lower_level (down)  
+  
 # ooo_cpu.cc:
 ## check_dib()
 1. check insts in IFETCH_BUFFER from DIB (decode instruction buffer, cache) and 
