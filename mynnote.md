@@ -1,11 +1,11 @@
 # Immport Flowcharts
 ## Level Hierachy:
-CPU_L1I(level=1), CPU_ITLB(level=1), CPU_DTLB(level=1)
-CPU_STLB(level=2)
-CPU_PTW(level=3)
-CPU_L1D(level=4)
-CPU_L2C(level=5)
-LLC(level=6)
+CPU_L1I(level=1), CPU_ITLB(level=1), CPU_DTLB(level=1)  
+CPU_STLB(level=2)  
+CPU_PTW(level=3)  
+CPU_L1D(level=4)  
+CPU_L2C(level=5)  
+LLC(level=6)  
 
 ## direction:
 to return (up)        lower_level (down)  
