@@ -55,7 +55,13 @@ if so mark as
 1. translate VAPQ.front() and add to pq
 2. 
 
+#ptw.cc:
+## handle_read()
+1. Handle RQ
+2. Check address translation level from PSCL5-2, create packet, insert into MSHR, also to rq in lower_level (L1D)
+## handle_fill()
+1. Hanle MSHR
+2. If translation level reaches 0, add translation into PSCLs
+3. Else create new packet and replace in MSHR
 
 
-
-   
