@@ -1,3 +1,18 @@
+# Immport Flowcharts
+## Level Hierachy:
+CPU_L1I(level=1), CPU_ITLB(level=1), CPU_DTLB(level=1)
+CPU_STLB(level=2)
+CPU_PTW(level=3)
+CPU_L1D(level=4)
+CPU_L2C(level=5)
+LLC(level=6)
+
+## direction:
+to return  /\         lower_level  |
+            |                      |
+            |                      |
+            |                     \/
+            
 # ooo_cpu.cc:
 ## check_dib()
 1. check insts in IFETCH_BUFFER from DIB (decode instruction buffer, cache) and 
