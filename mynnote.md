@@ -53,7 +53,7 @@ if so mark as
 1. create packets for L1D write queue
 2. pop rob entry
 
-#cache.cc:
+# cache.cc:
 ## add_rq()
 1. check forwarded from wq first
 2. check duplication. If so, merge request
