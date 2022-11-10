@@ -67,7 +67,13 @@ if so mark as
 1. translate VAPQ.front() and add to pq
 2. 
 
-#ptw.cc:
+# ptw.cc:
+Each STLB miss will generate a read request to PTW (add a packet to its RQ).
+In handle_read(), each RQ packet will generate one MSHR packet, which
+will be handled in handle_fill function. For each MSHR packet, first
+do TLB translation (if needed), if page fault, wait miss penalty cycles,
+otherwise, generate necessary packages to fill L1D or STLB.
+
 ## handle_read()
 1. Handle RQ
 2. Check address translation level from PSCL5-2, create packet, insert into MSHR, also to rq in lower_level (L1D)
